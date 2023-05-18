@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<server description="WebRTC server">
+    <featureManager>
+        <feature>webProfile-10.0</feature>
+    </featureManager>
+
+    <basicRegistry id="basic" realm="BasicRealm"/>
+    <httpSession securityIntegrationEnabled="false"/>
+    <httpEndpoint id="defaultHttpEndpoint"
+                  host="${default.hostname}"
+                  httpPort="${default.http.port}"
+                  httpsPort="${default.https.port}">
+        <httpOptions http2="enabled"/>
+    </httpEndpoint>
+    <webContainer disableXPoweredBy="true"/>
+    <cors domain="/api/v1"
+          allowedOrigins="*"
+          allowedMethods="GET, POST, PUT, PATCH, DELETE, OPTIONS"
+          allowedHeaders="origin, content-type, accept, authorization, cache-control, x-auth-token"
+          exposeHeaders="authorization"
+          maxAge="3600"/>
+</server>
